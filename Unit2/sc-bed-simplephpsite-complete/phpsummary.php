@@ -16,7 +16,26 @@
 
         echo '<h4>Server Environment</h4>';
         var_dump($_SERVER);
+
+        # the following keys contains informations about the client making the request
+        # against the server
+        # REMOTE_ADDR, HTTP_REFERER, HTTP_USER_AGENT
+        echo "<h4>Client's Request</h4>";
+        $clientRequest = [
+            'ip' => $_SERVER['REMOTE_ADDR'],
+            'ref' => $_SERVER['HTTP_REFERER'],
+            'ag' => $_SERVER['HTTP_USER_AGENT'],
+            'ts' => date("Y-m-d h:i:s", time()),
+        ];
+        var_dump($clientRequest);
+
+        echo '<h4>Global Variables and Values</h4>';
+        var_dump($GLOBALS);
+        echo $_SERVER['SCRIPT_FILENAME'];
         ?>
+
+
+
     </div>
     <?php include 'includes/footer.php' ?>
 </body>
